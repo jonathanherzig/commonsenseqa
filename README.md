@@ -12,6 +12,22 @@ which also has an evaluation script. The
 [leaderboard][commonsense-qa-leaderboard] is for the `random` split of
 the data.
 
+## Running ESIM
+Our implementation is based on [this code](https://github.com/rowanz/swagaf/tree/master/swag_baselines/esim). To run it, follow these steps:
+
+1. Install ESIM dependencies:
+    ```
+    cd esim
+    pip install -r requirements.txt
+    cd ..
+    ```
+2. Place the dataset in ```data/``` folder.
+3. Set PYTHONPATH to the `commonsenseqa` directory:
+```export PYTHONPATH=$(pwd)```
+4. Run the model either with pre-trained GloVe embeddings:
+```python -m allennlp.run train esim/train-glove-csqa.json -s tmp --include-package esim```
+5. Alternatively, run the model with ELMo pretrained contextual embeddings:
+```python -m allennlp.run train esim/train-elmo-csqa.json -s tmp --include-package esim```
 
 ## Running BERT
 
